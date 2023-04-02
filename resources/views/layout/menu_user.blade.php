@@ -1,0 +1,2 @@
+<li class="{{ (request()->is('user/home')) ? 'active' : '' }}"><a href="/user/home"><i class="fa fa-home"></i> <span>Dashboard</span></a></li>
+<li class="{{ (request()->is('user/gantipass*')) ? 'active' : '' }}"><a href="/user/gantipass"><i class="fa fa-key"></i> <span>Ganti Password</span></a></li>
