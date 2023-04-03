@@ -22,10 +22,14 @@ class HomeController extends Controller
 
             $item->antrian = $d == null ? null : $d->nomor_antrian;
             $item->sisa_antrian = $s;
-            if ($d->kdStatusPulang != null) {
-                $item->status = 3;
+            if ($d == null) {
+                $item->status = 4;
             } else {
-                $item->status = $d->ke_poli;
+                if ($d->kdStatusPulang != null) {
+                    $item->status = 3;
+                } else {
+                    $item->status = $d->ke_poli;
+                }
             }
             return $item;
         });

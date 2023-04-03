@@ -49,7 +49,7 @@
                                         @elseif ($item->status == 3)
                                         <span class="pull-right badge bg-green">selesai</span>
                                         @elseif ($item->status == 4)
-                                        <span class="pull-right badge bg-red">di lewati</span>
+                                        <span class="pull-right badge bg-red">Batal</span>
                                         @endif
                     </a></li>
                 </ul>
