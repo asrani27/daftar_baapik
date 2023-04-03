@@ -47,13 +47,13 @@ class HomeController extends Controller
 
     public function ganti_password(Request $req)
     {
-        if ($req->password_lama == Auth::user()->password) {
+        if (Hash::check($req->password_lama, Auth::user()->password)) {
             if ($req->password1 != $req->password2) {
                 Session::flash('error', 'Password Baru Tidak sama');
                 return back();
             } else {
 
-                Auth::user()->update(['password' => $req->password1]);
+                Auth::user()->update(['password' => Hash::make($req->password1)]);
                 Session::flash('success', 'Password Berhasil Di ubah, login dengan password baru');
                 Auth::logout();
                 return redirect('/login');
