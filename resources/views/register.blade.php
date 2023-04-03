@@ -46,10 +46,6 @@
           <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
       <div class="form-group has-feedback">
-        <input type="text" name="username" value="{{old('username')}}"class="form-control" placeholder="username" required>
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
         <input type="text" name="email" value="{{old('email')}}"class="form-control" placeholder="email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
