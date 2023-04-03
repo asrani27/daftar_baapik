@@ -20,22 +20,25 @@ class LoginController extends Controller
 
     public function login(Request $req)
     {
-        // $remember = $req->remember ? true : false;
-        // $credential = $req->only('username', 'password');
+        $remember = $req->remember ? true : false;
+        $credential = $req->only('email', 'password');
 
-        // if (Auth::attempt($credential, $remember)) {
-        //     return 'oke';
-        // } else {
-        //     return 'no oke';
-        // }
-        $check = User::where('email', $req->email)->where('password', $req->password)->first();
-        if ($check == null) {
+        if (Auth::attempt($credential, $remember)) {
+            Session::flash('success', 'Selamat Datang');
+            return redirect('/user/home');
+        } else {
+            request()->flash();
             Session::flash('error', 'Username / Password Tidak Ditemukan');
             return back();
-        } else {
-            Auth::login($check);
-            return redirect('/user/home');
         }
+        // $check = User::where('email', $req->email)->where('password', $req->password)->first();
+        // if ($check == null) {
+        //     Session::flash('error', 'Username / Password Tidak Ditemukan');
+        //     return back();
+        // } else {
+        //     Auth::login($check);
+        //     return redirect('/user/home');
+        // }
         // if ($req->email)
         //     //$field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 

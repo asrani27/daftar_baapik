@@ -34,7 +34,7 @@ class RegisterController extends Controller
         $role = Role::where('name', 'user')->first();
         $attr = $req->all();
         $attr['email_verified_at'] = null;
-        $attr['password'] = $req->password;
+        $attr['password'] = Hash::make($req->password);
 
         $u = User::create($attr);
         $u->roles()->attach($role);
