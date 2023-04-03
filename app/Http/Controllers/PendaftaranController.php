@@ -28,14 +28,12 @@ class PendaftaranController extends Controller
 
     public function store_form_daftar(Request $req, $puskesmas_id)
     {
-        $namaDB = Puskesmas::find($puskesmas_id)->first();
-        dd(DB::connection('banjarmasinindah')->table('m_pasien')->get());
-        $checkPasien = DB::connection($namaDB->db)->table('m_pasien')->where('nik', $req->nik)->first();
-        dd($checkPasien);
+
         //check ke DB puskesmas apakah pasien ada, jika belum ada, tambahkan
         DB::beginTransaction();
         try {
 
+            $namaDB = Puskesmas::find($puskesmas_id)->first();
             $p = new Pendaftaran;
             $p->puskesmas = $namaDB->db;
             $p->jenis = 'UMUM';
