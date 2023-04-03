@@ -27,7 +27,14 @@
               </div>
               <div class="box-footer no-padding">
                 <ul class="nav nav-stacked">
-                  <li><a href="#" style="padding: 2px 15px;">Nomor Antrian <span class="pull-right badge bg-blue">{{$item->antrian}}</span></a></li>
+                  <li><a href="#" style="padding: 2px 15px;">Nomor Antrian 
+                    @if ($item->antrian == null)
+                    <span class="pull-right badge bg-red">dihapus</span>
+                    @else
+                    <span class="pull-right badge bg-blue">{{$item->antrian}}</span>
+                        
+                    @endif
+                  </a></li>
                   <li><a href="#" style="padding: 2px 15px;">Sisa Antrian <span class="pull-right badge bg-blue">{{$item->sisa_antrian}} orang, {{$item->sisa_antrian * 3}} menit</span></a></li>
                   <li><a href="#" style="padding: 2px 15px;">Poli <span class="pull-right badge bg-aqua">UMUM</span></a></li>
                   <li><a href="#" style="padding: 2px 15px;">Puskesmas <span class="pull-right badge bg-green">{{$item->puskesmas}}</span></a></li>

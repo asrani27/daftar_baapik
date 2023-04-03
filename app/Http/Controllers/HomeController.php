@@ -20,7 +20,7 @@ class HomeController extends Controller
             $d =  DB::connection($item->puskesmas)->table('t_pendaftaran')->where('pendaftaran_id', $item->id)->first();
             $s =  DB::connection($item->puskesmas)->table('t_pendaftaran')->where('tglDaftar', Carbon::parse($item->tgl_daftar)->format('d-m-Y'))->where('kdPoli', $item->kdPoli)->where('status', 'baru')->where('pendaftaran_id', '<', $item->id)->count();
 
-            $item->antrian = $d->nomor_antrian;
+            $item->antrian = $d == null ? null : $d->nomor_antrian;
             $item->sisa_antrian = $s;
             if ($d->kdStatusPulang != null) {
                 $item->status = 3;
