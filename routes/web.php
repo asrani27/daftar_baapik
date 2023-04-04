@@ -55,3 +55,4 @@ Route::group(['middleware' => ['auth']], function () {
         // Route::post('daftarpasien', [PasienController::class, 'simpanDaftar']);
     });
 });
+require __DIR__ . '/web-sso.php';
