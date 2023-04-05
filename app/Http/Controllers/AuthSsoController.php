@@ -128,7 +128,7 @@ class AuthSsoController extends Controller
     {
         $curl = curl_init();
 
-        User::find(42)->update(['token' => $token]);
+        //User::find(42)->update(['token' => $token]);
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => $this->base_url . '/api/sso/is-valid',
